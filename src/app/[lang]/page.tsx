@@ -2,6 +2,7 @@ import { getDictionary } from "../../../getDictionary";
 import { Locale } from "../../../i18n-config";
 import Counter from "./components/counter";
 import LocaleSwitcher from "./components/LocaleSwitcher";
+import Providers from "./components/providers";
 
 export default async function IndexPage({
   params: { lang },
@@ -13,14 +14,9 @@ export default async function IndexPage({
   return (
     <div>
       <LocaleSwitcher />
-      <div>
-        <p>Current locale: {lang}</p>
-        <p>
-          This text is rendered on the server:{" "}
-          {dictionary["server-component"].welcome}
-        </p>
+      <Providers dictionary={dictionary}>
         <Counter dictionary={dictionary.counter} />
-      </div>
+      </Providers>
     </div>
   );
 }
