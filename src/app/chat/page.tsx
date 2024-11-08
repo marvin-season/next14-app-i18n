@@ -1,15 +1,15 @@
 'use client';
 
+import { request } from "@/service/request";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export default function ChatPage() {
   const t = useTranslations("ChatPage");
   const [message, setMessage] = useState("");
-  
+
   useEffect(() => {
-    fetch("/api/chat")
-      .then((res) => res.json())
+    request("/api/chat")
       .then((data) => setMessage(data.message));
   }, [t]);
 
